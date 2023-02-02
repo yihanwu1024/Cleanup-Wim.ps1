@@ -94,16 +94,17 @@ function processWimFileAtIndex {
     REG LOAD    $RegMountPathNTUser       "$MountDir\Users\Default\NTUSER.DAT"
 
 
-    REG DELETE "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Renderers\SubscribedContent-310091" /f
-    REG DELETE "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Renderers\SubscribedContent-310092" /f
-    REG DELETE "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Renderers\SubscribedContent-338380" /f
-    REG DELETE "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Renderers\SubscribedContent-338381" /f
-  # REG DELETE "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Renderers\SubscribedContent-338387" /f # Windows Spotlight lock screen, without Windows tips
-    REG DELETE "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Renderers\SubscribedContent-338388" /f
+  # REG ADD    "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "ContentDeliveryAllowed" /t REG_DWORD /d 0 /f
+  #  REG DELETE "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Renderers\SubscribedContent-310091" /f
+  #  REG DELETE "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Renderers\SubscribedContent-310092" /f
+  #  REG DELETE "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Renderers\SubscribedContent-338380" /f
+  #  REG DELETE "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Renderers\SubscribedContent-338381" /f
+  ## REG DELETE "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Renderers\SubscribedContent-338387" /f # Windows Spotlight lock screen, with Windows tips or image description
+  #  REG DELETE "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Renderers\SubscribedContent-338388" /f
     REG ADD    "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "FeatureManagementEnabled" /t REG_DWORD /d 0 /f
     REG ADD    "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "OemPreInstalledAppsEnabled" /t REG_DWORD /d 0 /f
     REG ADD    "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "PreInstalledAppsEnabled" /t REG_DWORD /d 0 /f
-  # REG ADD    "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "RotatingLockScreenEnabled" /t REG_DWORD /d 0 /f
+    REG ADD    "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "RotatingLockScreenEnabled" /t REG_DWORD /d 0 /f
     REG ADD    "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "RotatingLockScreenOverlayEnabled" /t REG_DWORD /d 0 /f
     REG ADD    "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SilentInstalledAppsEnabled" /t REG_DWORD /d 0 /f
     REG ADD    "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SlideshowEnabled" /t REG_DWORD /d 0 /f
@@ -128,7 +129,7 @@ function processWimFileAtIndex {
     REG ADD    "$RegMountPathSoftware\Microsoft\PCHC" /v "PreviousUninstall" /t REG_DWORD /d 1 # Mark PC Health Check as previously uninstalled, so it doesn't get automatically installed
     REG ADD    "$RegMountPathSoftware\Microsoft\Windows\CurrentVersion\WindowsStore\WindowsUpdate" /v "AutoDownload" /t REG_DWORD /d 2 # Turn off automatic updates from Microsoft Store
   # REG ADD    "$RegMountPathSoftware\Policies\Microsoft\WindowsStore" /v "AutoDownload" /t REG_DWORD /d 2 # Turn off automatic updates from Microsoft Store
-  # REG ADD    "$RegMountPathSoftware\Policies\Microsoft\WindowsStore" /v "RemoveWindowsStore" /t REG_DWORD /d 2 # Turn off automatic updates from Microsoft Store
+  # REG ADD    "$RegMountPathSoftware\Policies\Microsoft\WindowsStore" /v "RemoveWindowsStore" /t REG_DWORD /d 2 # Turn off Microsoft Store
     
     REG ADD    "$RegMountPathSoftware\Policies\Microsoft\Windows\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d 0
     REG ADD    "$RegMountPathSoftware\Policies\Microsoft\Windows\Windows Feeds" /v "EnableFeeds" /t REG_DWORD /d 0
@@ -182,7 +183,7 @@ If (-not (Test-Path -Path $WimFile -PathType Leaf)) {
 }
 If (-not $PSBoundParameters.ContainsKey('Index')) {
     "Index is empty, gonna process all indexes"
-    $ProcessAllImages = $True
+    $ProcessAllIndexes = $True
 }
 
 # Generate Run ID
@@ -217,7 +218,7 @@ If (-not $PSBoundParameters.ContainsKey('MountDir')) {
 "Run ID: $RunID"
 "Mount Directory: $MountDir"
 
-If ($ProcessAllImages) {
+If ($ProcessAllIndexes) {
     $ImageCount = (dism /Get-WimInfo /WimFile:$WimFile /English | Select-String -pattern "Index : .*" | Measure-Object -Line)."Lines"
     for ($Index=1; $Index -le $ImageCount; $Index++) {
         "Processing Image Index: $Index"
