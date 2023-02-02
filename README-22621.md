@@ -8,8 +8,8 @@ Based on Microsoft official ISO image releases. If you want to use this script d
   - Remove OneDrive Setup (and OneDrive will be gone)
   - Remove OEM Default associations (does not break Windows Update as of January 2023)
 - Remove most APPX packages
+  - Remove Widgets (by removing Web Experience Pack)
 - Remove Start Menu promotions (by firewalling StartMenuExperienceHost)
-- Remove Widgets (by removing Web Experience Pack)
 - Disable automatic installation of Microsoft Teams
 - Disable Chat icon (with Group Policy)
 - Disable web-enabled Windows Search (with Group Policy); falls back to local search
