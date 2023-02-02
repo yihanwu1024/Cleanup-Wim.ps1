@@ -12,7 +12,7 @@ This repository contains a Windows image modification script for each feature up
 
 Cleaning a Windows installation/image before setup has a few advantages:
 
-- The result is a depoyable installation image.
-  - You are forced to change the default user registry rather than the current user registry. In this way, all users will receive the user registry modification, not just the user that you operated.
+- The result is a deployable installation image.
+  - There is no user. You are forced to change the default user registry rather than the current user registry. In this way, all users will receive the user registry modification, not just the user that you operated.
   - You can create a modified image for every Windows feature update and install from your modified image, rather than having everything come back again.
 - No initialization can happen in the components you removed.
