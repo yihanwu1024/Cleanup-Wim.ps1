@@ -1,4 +1,4 @@
-# Cleanup-Wim-22621.ps1
+# Cleanup-Wim-19045.ps1
  
 Based on Microsoft official ISO image releases. If you want to use this script directly, obtain the correct ISO image from Microsoft. Otherwise you may want to modify the script.
 
