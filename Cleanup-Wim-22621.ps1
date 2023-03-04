@@ -105,7 +105,7 @@ $ProvisionedAppxPackages = @(
 "Microsoft.ZuneVideo_2019.22020.10021.0_neutral_~_8wekyb3d8bbwe"
 "MicrosoftCorporationII.MicrosoftFamily_0.1.28.0_neutral_~_8wekyb3d8bbwe"
 "MicrosoftCorporationII.QuickAssist_2022.414.1758.0_neutral_~_8wekyb3d8bbwe"
-"MicrosoftWindows.Client.WebExperience_421.20070.195.0_neutral_~_cw5n1h2txyewy"
+"MicrosoftWindows.Client.WebExperience_421.20070.195.0_neutral_~_cw5n1h2txyewy"  # Will be reinstalled in March 2023 update
 )
 
 
@@ -135,6 +135,9 @@ function processWimFileAtIndex {
     # Scheduled tasks cleanup
 
     # Services cleanup
+    
+    # Files cleanup
+    Remove-Item "$MountDir\Users\Public\Desktop\Microsoft Edge.lnk"  # Not managed in Component Based Servicing
 
     # Various registry hacks
                 $RegMountPathSoftware     = "HKLM\SOFTWARE-$RunId"
