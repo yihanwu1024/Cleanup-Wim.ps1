@@ -98,6 +98,7 @@ $ProvisionedAppxPackages = @(
 "Microsoft.WindowsStore_22204.1400.4.0_neutral_~_8wekyb3d8bbwe"
 "Microsoft.Xbox.TCUI_1.23.28004.0_neutral_~_8wekyb3d8bbwe"
 "Microsoft.XboxGameOverlay_1.47.2385.0_neutral_~_8wekyb3d8bbwe"
+"Microsoft.XboxGamingOverlay_2.622.3232.0_x64_~_8wekyb3d8bbwe"  # Screen recording available in Snipping Tool after March 2023 update
 "Microsoft.XboxIdentityProvider_12.50.6001.0_neutral_~_8wekyb3d8bbwe"
 "Microsoft.XboxSpeechToTextOverlay_1.17.29001.0_neutral_~_8wekyb3d8bbwe"
 "Microsoft.YourPhone_1.22022.147.0_neutral_~_8wekyb3d8bbwe"
@@ -182,6 +183,7 @@ function processWimFileAtIndex {
   # REG ADD    "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-353698Enabled" /t REG_DWORD /d 0 # Show suggestions in your timeline (Deprecated)
     REG ADD    "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-80000326Enabled" /t REG_DWORD /d 0 # Desktop wallpaper from Bing
     REG ADD    "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileEngagement" /v "ScoobeSystemSettingEnabled" /t REG_DWORD /d 0 # Suggest ways I can finish settings up my device to get the most out of Windows
+  # REG ADD    "$RegMountPathNTUser\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "TaskbarDa" /t REG_DWORD /d 0 # Turn off Widgets per user
     
     REG ADD    "$RegMountPathNTUser\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "DisableSearchBoxSuggestions" /t REG_DWORD /d 1
 
@@ -190,7 +192,7 @@ function processWimFileAtIndex {
   # REG ADD    "$RegMountPathSoftware\Policies\Microsoft\WindowsStore" /v "AutoDownload" /t REG_DWORD /d 2 # Turn off automatic updates from Microsoft Store
   # REG ADD    "$RegMountPathSoftware\Policies\Microsoft\WindowsStore" /v "RemoveWindowsStore" /t REG_DWORD /d 2 # Turn off Microsoft Store
     REG ADD    "$RegMountPathSoftware\Policies\Microsoft\Windows\Windows Chat" /v "ChatIcon" /t REG_DWORD /d 3
-  # REG ADD    "$RegMountPathSoftware\Policies\Microsoft\Dsh" /v "AllowNewsAndInterests" /t REG_DWORD /d 0
+    REG ADD    "$RegMountPathSoftware\Policies\Microsoft\Dsh" /v "AllowNewsAndInterests" /t REG_DWORD /d 0 # Disable Widgets with Group Policy
     
   # REG ADD    "$RegMountPathSoftware\Policies\Microsoft\Windows\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d 0
   # reg add    "$RegMountPathSoftware\Policies\Microsoft\Windows\Windows Error Reporting" /v Disabled /t REG_DWORD /d 1 /f
