@@ -12,6 +12,7 @@ Based on Microsoft official ISO image releases. If you want to use this script d
 - Remove Start Menu promotions (by firewalling StartMenuExperienceHost)
 - Disable automatic installation of Microsoft Teams
 - Disable Chat icon (with Group Policy)
+- Disable Widgets (with Group Policy)
 - Disable web-enabled Windows Search (with Group Policy); falls back to local search
 - Disable promotions from Content Delivery Manager
 - Disable automatic updates for Microsoft Store apps (behaves independently from Microsoft Store)
