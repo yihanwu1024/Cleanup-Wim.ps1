@@ -98,7 +98,7 @@ $ProvisionedAppxPackages = @(
 "Microsoft.WindowsStore_22204.1400.4.0_neutral_~_8wekyb3d8bbwe"
 "Microsoft.Xbox.TCUI_1.23.28004.0_neutral_~_8wekyb3d8bbwe"
 "Microsoft.XboxGameOverlay_1.47.2385.0_neutral_~_8wekyb3d8bbwe"
-"Microsoft.XboxGamingOverlay_2.622.3232.0_x64_~_8wekyb3d8bbwe"  # Screen recording available in Snipping Tool after March 2023 update
+"Microsoft.XboxGamingOverlay_2.622.3232.0_neutral_~_8wekyb3d8bbwe"  # Screen recording available in Snipping Tool after March 2023 update
 "Microsoft.XboxIdentityProvider_12.50.6001.0_neutral_~_8wekyb3d8bbwe"
 "Microsoft.XboxSpeechToTextOverlay_1.17.29001.0_neutral_~_8wekyb3d8bbwe"
 "Microsoft.YourPhone_1.22022.147.0_neutral_~_8wekyb3d8bbwe"
@@ -135,9 +135,6 @@ function processWimFileAtIndex {
     # Scheduled tasks cleanup
 
     # Services cleanup
-    
-    # Files cleanup
-    Remove-Item "$MountDir\Users\Public\Desktop\Microsoft Edge.lnk"  # Not managed in Component Based Servicing
 
     # Various registry hacks
                 $RegMountPathSoftware     = "HKLM\SOFTWARE-$RunId"
