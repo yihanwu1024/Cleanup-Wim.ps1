@@ -72,7 +72,7 @@ function RunAsTI ($cmd,$arg) { $id='RunAsTI'; $key="Registry::HKU\$(((whoami /us
 $Packages = @(
 "Microsoft-Windows-Not-Supported-On-LTSB-Package~31bf3856ad364e35~amd64~~10.0.22621.1"
 "Microsoft-Windows-Not-Supported-On-LTSB-WOW64-Package~31bf3856ad364e35~amd64~~10.0.22621.1"
-# Unlike Windows 10, removing Not-Supported-On-LTSB-Package here will not break Windows Update (as of January 2023).
+# Unlike Windows 10, removing Not-Supported-On-LTSB-Package here will not break Windows Update (as of March 2023).
 #"Microsoft-Windows-OneDrive-Setup-Package~31bf3856ad364e35~amd64~~10.0.22621.1"
 #"Microsoft-Windows-OneDrive-Setup-WOW64-Package~31bf3856ad364e35~amd64~~10.0.22621.1"
 )
