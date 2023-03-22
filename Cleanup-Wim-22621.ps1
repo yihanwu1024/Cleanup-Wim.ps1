@@ -193,6 +193,7 @@ function processWimFileAtIndex {
   # REG ADD    "$RegMountPathSoftware\Policies\Microsoft\WindowsStore" /v "RemoveWindowsStore" /t REG_DWORD /d 2 # Turn off Microsoft Store
     REG ADD    "$RegMountPathSoftware\Policies\Microsoft\Windows\Windows Chat" /v "ChatIcon" /t REG_DWORD /d 3
     REG ADD    "$RegMountPathSoftware\Policies\Microsoft\Dsh" /v "AllowNewsAndInterests" /t REG_DWORD /d 0 # Disable Widgets with Group Policy
+    REG ADD    "$RegMountPathSoftware\Policies\Microsoft\Edge" /v "HubsSidebarEnabled" /t REG_DWORD /d 0 # Disable Edge Bing button with Group Policy
     
   # REG ADD    "$RegMountPathSoftware\Policies\Microsoft\Windows\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d 0
   # reg add    "$RegMountPathSoftware\Policies\Microsoft\Windows\Windows Error Reporting" /v Disabled /t REG_DWORD /d 1 /f
