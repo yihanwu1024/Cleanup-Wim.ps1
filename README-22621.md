@@ -4,11 +4,11 @@ Based on Microsoft official ISO image releases. If you want to use this script d
 
 ## List of modifications
 
-- Remove Not-Supported-On-LTSB-Package (does not break Windows Update as of January 2023)
+- Remove Not-Supported-On-LTSB-Package (does not break Windows Update as of March 2023)
   - Remove OneDrive Setup (and OneDrive will be gone)
-  - Remove OEM Default associations (does not break Windows Update as of January 2023)
+  - Remove OEM Default associations (does not break Windows Update as of March 2023)
 - Remove most APPX packages
-  - Remove Widgets (by removing Web Experience Pack)
+  - Remove Widgets (by removing Web Experience Pack, which will be reinstalled in 22621.1344 update)
 - Remove Start Menu promotions (by firewalling StartMenuExperienceHost)
 - Disable automatic installation of Microsoft Teams
 - Disable Chat icon (with Group Policy)
