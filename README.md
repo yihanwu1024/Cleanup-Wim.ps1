@@ -1,5 +1,7 @@
 # Cleanup-Wim-*.ps1
 
+**Abandoned. Use [this guide](https://www.tebibyte.io/~yihanwu1024/things/policing-windows-11/) instead.**
+
 This repository contains a Windows image modification script for each feature update version we support. For a list of modifications made by the script, refer to each of the READMEs.
 
 ## Functionalities
